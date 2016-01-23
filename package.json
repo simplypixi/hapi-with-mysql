@@ -15,5 +15,12 @@
   "bugs": {
     "url": "https://github.com/simplypixi/hapi-with-mysql/issues"
   },
-  "homepage": "https://github.com/simplypixi/hapi-with-mysql#readme"
+  "homepage": "https://github.com/simplypixi/hapi-with-mysql#readme",
+  "dependencies": {
+    "hapi": "^9.5.1",
+    "hapi-swagger": "^2.2.0",
+    "inert": "^3.2.0",
+    "joi": "^6.10.0",
+    "vision": "^3.0.0"
+  }
 }

@@ -1,17 +1,34 @@
-var mysql      = require('mysql');
-var connection = mysql.createConnection({
-  host     : 'localhost',
-  user     : 'root',
-  password : '',
-  database : 'plan_wmi'
-});
+var Inert = require('inert'),
+	Vision = require('vision'),
+	Hapi = require('hapi'),
+	HapiSwagger = require('hapi-swagger');
  
-/*connection.connect();
+var swaggerOptions = {
+    info: {
+        'title': 'Test API Documentation',
+        'version': '1.0.0'
+    },
+    tags: [{
+        'name': 'users',
+        'description': 'Users data'
+    }]
+};
+
+var server = new Hapi.Server();
+server.connection({ port: 3000 });
+
+server.register([
+    Inert,
+    Vision,
+    {
+        'register': HapiSwagger,
+        'options': swaggerOptions
+    }], function(err) {
+        server.start(function() {
+        	console.log("Server started.");
+        });
+    }
+);
+
+server.route(require('./routes/test.js'));
  
-connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
-  if (err) throw err;
- 
-  console.log('The solution is: ', rows[0].solution);
-});
- 
-connection.end();*/
